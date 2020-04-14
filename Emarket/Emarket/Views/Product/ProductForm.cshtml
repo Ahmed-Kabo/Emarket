@@ -1,0 +1,96 @@
+﻿@model Emarket.ViewModels.ProductFormViewModel
+@{
+    ViewBag.Title = "ProductForm";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>ProductForm</h2>
+
+<h2 style="text-align:center;font-size:x-large">@Model.Heading</h2>
+
+<div style="min-height:620px">
+    <div class="container">
+        @using (Html.BeginForm(Model.Action, "Product", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            <p class="alert alert-info">All fields are <strong>required</strong></p>
+            <div class="alert alert-danger" id="err-div" style="display:none">
+                <span id="view-err">
+
+                </span>
+            </div>
+
+            @Html.AntiForgeryToken()
+            @Html.HiddenFor(m => m.Id)
+            @Html.HiddenFor(m => m.Image)
+
+            <div class="col-md-6">
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Name)
+                    @Html.TextBoxFor(m => m.Name, new { @class = "form-control", autofocus = "autofocus" })
+                    @Html.ValidationMessageFor(m => m.Name)
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Description)
+                    @Html.TextAreaFor(m => m.Description, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.Description)
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Price)
+                    @Html.TextBoxFor(m => m.Price, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.Price)
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Category)
+                    @Html.DropDownListFor(m => m.Category, new SelectList(Model.Categories, "Id", "Name"), "", new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.Category)
+                </div>
+                <button type="submit" class="btn btn-primary btn-lg" id="save">Save</button>
+
+                <a class="btn btn-default  btn-lg" href="@Url.Action("Index","Home")">Back to list</a>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+
+                    <div class="col-md-10">
+                        @Html.LabelFor(m => m.Image, new { @class = "control-label col-md-2" })
+                        <img src="~/Images/@Url.Content(Model.Image)" class="img-rounded" style="margin:10px" height="200" width="200" id="imagepreview" />
+                        <input type="file" name="ImageUpload" accept="image/jpeg,image/png" id="newsimage" onchange="ShowImagePreview(this,document.getElementById('imagepreview'))" />
+                        @Html.ValidationMessageFor(m => m.Image)
+                    </div>
+                </div>
+
+            </div>
+
+
+
+        }
+    </div>
+</div>
+
+@section scripts{
+    @Scripts.Render("~/bundles/jqueryval")
+    <script>
+                function ShowImagePreview(imageUploader, previewImage) {
+                    if (imageUploader.files && imageUploader.files[0]) {
+                        var reader = new FileReader();
+                        reader.onload = function (e) {
+                            $(previewImage).attr('src', e.target.result);
+
+                        }
+
+                        reader.readAsDataURL(imageUploader.files[0]);
+                    }
+                }
+                //$(function () {
+                //    $("#save").click(function () {
+                //        if ($("#newsimage").val() == "") {
+                //            $("#err-div").fadeIn();
+                //            $("#view-err").append("Please Select a Photo");
+                //            return false;
+                //        }
+                //    })
+                //})
+    </script>
+}

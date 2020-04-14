@@ -1,0 +1,30 @@
+﻿@model IEnumerable<Emarket.Models.Product>
+@{
+    ViewBag.Title = "Mine";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<div class="product">
+    <div class="container">
+        <div class="row">
+            <h2> My <span>product</span> </h2>
+            @foreach (var product in Model)
+            {
+                <div class="col-md-3  ">
+                    <div class="image">
+                        <div class="img">
+                            <img src="~/Images/@Url.Content(product.Image)" >
+                        </div>
+                        <h3>  @product.Name</h3>
+                        <h4>  @product.Price <span> $ </span>   </h4>
+                        <a href="@Url.Action("Details","Product",new { id=product.Id})" class="button"><strong>Details</strong></a>
+                    </div>
+
+                </div>
+
+            }
+        </div>
+    </div>
+</div>

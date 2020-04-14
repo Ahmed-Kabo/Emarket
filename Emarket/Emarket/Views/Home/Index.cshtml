@@ -1,0 +1,58 @@
+﻿@model Emarket.ViewModels.ProductViewModel
+
+@{
+    ViewBag.Title = "Home Page";
+}
+
+
+<div class="jumbotron">
+    <div class="overlay">
+        <div class="container">
+            <div class="center">
+                <h1 class="main"> welcome to  <span>E market</span></h1>
+                <p>this webbsite is creat to add and delete a prducts so you can add and buy </p>
+                <a class="btn  button" href="@Url.Action("Create", "Product")">Add Product</a>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="search">
+    @using (Html.BeginForm("Search", "Product"))
+    {
+        <div class="form-group">
+            <div class="container">
+                <div id=" searchgigs" class="input-group">
+                    @Html.TextBoxFor(m => m.SearchTerm, new { @class = "form-control", placeholder = "Search by Name , Category...." })
+                    <span class="input-group-addon">
+                        <i class="glyphicon glyphicon-search"></i>
+                    </span>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+<div class="product">
+    <div class="container">
+        <div class="row">
+            <h2> our <span>product</span> </h2>
+            @foreach (var product in Model.UpcomingProducts)
+            {
+                <div class="col-md-3  ">
+                    <div class="image">
+                        <div class="img">
+                            <img src="~/Images/@Url.Content(product.Image)" class="img-rounded" >
+                        </div>
+                        <h3 >  @product.Name</h3>
+                        <h4 >  @product.Price <span> $ </span>   </h4>
+                        <a href="@Url.Action("Details","Product",new { id=product.Id})" class="button" ><strong>Details</strong></a>
+                    </div>
+
+                </div>
+
+            }
+        </div>
+    </div>
+</div>

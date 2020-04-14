@@ -1,0 +1,261 @@
+﻿
+body
+{
+    min-height: 500px;
+}
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+span.field-validation-error {
+    font-weight: bold;
+    color: red;
+}
+
+
+
+
+.navbar-inverse 
+{
+    background-color: #151515 !important;
+    border-color: #151515 !important;
+}
+.navbar-inverse .navbar-brand {
+    font-size:2.2rem;
+    font-family: 'Righteous', cursive;
+    text-transform: uppercase;
+    color: #00d0ff;
+}
+.navbar-inverse .navbar-brand:hover{
+
+    color: #00d0ff;
+}
+.navbar-nav {
+    margin: 0 auto 0 91px !important;
+}
+.nav > li {
+    margin: 0 5px;
+}
+.navbar-inverse .navbar-nav > li > a {
+    color: #ffffff;
+    font-size: 17px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    word-spacing: 6px;
+    transition:all 0.4s ease-in-out;
+}
+.navbar-inverse .navbar-nav > li > a:hover {
+    color: #00d0ff;
+}
+/* the add pdact section */
+.jumbotron {
+    position: relative !important;
+    width: 100% !important;
+    height: 600px !important;
+    background: url('../Image/background.jpg') fixed no-repeat center center !important;
+    background-size:cover;
+    text-align: center;
+    margin:0 !important;
+
+}
+ .jumbotron .overlay 
+ {
+     position:absolute;
+     top:0;
+     left:0;
+     width:100%;
+     height:100%;
+     background:rgba(0, 0,0 ,0.6);
+ }
+    .jumbotron .overlay .center {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 80%;
+    }
+    .jumbotron h1 {
+        text-transform: uppercase;
+        color: #ebebeb;
+        margin-bottom: 20px;
+    }
+.jumbotron h1 span {
+    color: #00d0ff;
+       
+}
+.jumbotron p {
+    line-height: 2.4;
+    color: #939292;
+    text-transform: capitalize;
+}
+
+.button {
+    border-radius: 34px;
+    width: 232px;
+    padding: 17px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin: 20px 0;
+    border: 2px solid #00d0ff;
+    font-size: 19px;
+    color:#fff;
+    background: none;
+    transition: all 0.4s ease-in-out;
+}
+.button:hover {
+    background: #00d0ff;
+}
+
+/* search group*/
+.search .form-group {
+    height: 200px;
+    width: 100%;
+    background: #1c1c1c;
+    margin: 0;
+    padding: 0;
+}
+
+
+.search  .input-group{
+    display: flex;
+    justify-content:center;
+    margin: 75px 0;
+}
+.search input {
+    max-width: 60% !important;
+    height: 50px;
+    border-radius: 25px;
+    border: none;
+}
+.search .input-group-addon {
+    height: 50px;
+    line-height: 40px;
+    font-size: 25px;
+    background: #00d0ff;
+    border: none;
+    display: block;
+    border-radius: 0 25px 25px 0;
+    color: #fff;
+    width: 114px;
+    cursor:pointer;
+}
+
+/* start our products*/
+
+.product
+{
+    margin:60px 0;
+}
+.product h2 {
+    position: relative;
+    text-transform: uppercase;
+    TEXT-ALIGN: CENTER;
+    font-weight: bold;
+    font-size: 2.8em;
+    margin:20px 0 40px ;
+}
+.product h2 span {
+    color: #00d0ff;
+}
+
+.product .image {
+    text-align: center;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 0 11px -4px rgba(0, 0, 0, 0.3);
+    margin:20px 5px 30px ;
+    min-height: 350px;
+    transition:all 0.3s linear;
+}
+.product .image .img
+{
+    width:100%;
+    height:200px;
+    overflow:hidden;
+    
+}
+.product .image .img img {
+    width: 100%;
+    transform: scale(1.1);
+    transition: all 0.2s linear;
+
+}
+    .product .image:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 0 11px -4px #00d0ff;
+    }
+.product .image:hover img {
+    transform: scale(1);
+}
+.product .image h3{
+    text-align: center;
+    font-size: 20px;
+    text-transform: capitalize;
+    font-weight: bold;
+    color: #ffffff;
+    background: #00d0ff;
+    padding: 10px;
+}
+.product .image h4
+{
+    font-size: 25px;
+    font-weight:bold;
+    margin:20px;
+}
+.product .image h4 span {
+    color: #00d0ff; 
+}
+
+.product .image .button {
+    width: 120px;
+    padding: 10px;
+    color: #000;
+    font-size: 16px;
+    margin: 20px auto;
+    display: block;
+    text-decoration:none;
+
+}
+.product .image .button:hover {
+
+    color: #fff;
+
+    text-decoration: none;
+}
+
+
+
+
+.detalis-product {
+    margin: 60px 0;
+}
+/* footer*/
+footer {
+    height: 100px;
+    text-align: center;
+    color: #eee;
+    background: #222;
+}
+footer p{
+    font-size:20px;
+    padding :30px 0;
+}
+
+
+

@@ -1,0 +1,134 @@
+﻿@model Emarket.Models.Product
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+
+    <div class="container">    
+        <div class="detalis-product" style="margin:60px 0; min-height:600px">
+            <div class="row">
+                <h2 style="text-align:center;font-weight:bold">Details</h2>
+                <div class="col-md-6">
+                    <div class="image" style="width:100%; overflow:hidden;">
+                        <div>
+                            @Html.DisplayNameFor(model => model.Image)
+                        </div>
+                        <img src="~/Images/@Url.Content(Model.Image)" width="100%">
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="dl-horizontal" style="  padding-top: 123PX; FONT-SIZE: 20PX;
+    /* TEXT-ALIGN: LEFT; */
+">
+                        <dt>
+                            Category
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.Category.Name)
+                        </dd>
+
+
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.Name)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.Name)
+                        </dd>
+                        <dt>
+                            @Html.DisplayNameFor(model => model.Price)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.Price)
+                        </dd>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.Description)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.Description)
+                        </dd>
+
+
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
+
+
+            @if (User.Identity.IsAuthenticated)
+            {
+                <a class="btn btn-info " href="@Url.Action("Edit", "Product", new {id=Model.Id })">Update</a>
+                <a class="btn btn-danger js-delete-product" data-product-id="@Model.Id">Delete</a>
+            }
+
+            <a class="btn btn-default " style="margin:30px auto;display:block; width: 200px; font-size:18px; color:" href="@Url.Action("Index", "Home")">Back to list</a>
+        </div>
+    </div>
+
+
+
+
+@section scripts{
+
+    <script>
+        $(document).ready(function () {
+            $(".js-delete-product").click(function (e) {
+
+                var Link = $(e.target);
+                bootbox.dialog({
+                    title: "Confirm",
+                    message: "Are you sure you want to Delete this  ?",
+
+                    buttons: {
+                        No: {
+                            label: "No",
+                            className: 'btn-default',
+                            callback: function () {
+                                bootbox.hideAll();
+                            }
+                        },
+                        yes: {
+                            label: "Yes",
+                            className: 'btn-danger',
+                            callback: function () {
+                                $.ajax({
+                                    url: "/api/Product/" + Link.attr("data-product-id"),
+                                    method: "DELETE"
+                                })
+                                    .done(function () {
+
+                                        Link.parents(".product").fadeOut(function () {
+                                            $(this).remove();
+                                        });
+                                    })
+                                    .fail(function () {
+                                        alert("somthing fail");
+                                    });
+                            }
+                        }
+
+
+                    }
+                });
+
+
+
+
+            });
+        });
+    </script>
+}
